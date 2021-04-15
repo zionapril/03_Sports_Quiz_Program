@@ -1,5 +1,6 @@
 from tkinter import *
 from functools import partial   # To prevent unwanted windows
+from PIL import ImageTk,Image
 import random
 
 
@@ -15,23 +16,31 @@ class Start:
         self.sap_frame.grid()
 
         # SAP Heading (row 0)
-        self.sap_label = Label(self.sap_frame, text="SPORTS ANALYSIS PROGRAM",
+        self.quiz_label = Label(self.sap_frame, text="ENGLISH PREMIER LEAGUE QUIZ",
                                font="Arial 16 bold", bg=background_colour,
                                padx=10, pady=10)
-        self.sap_label.grid(row=0)
+        self.quiz_label.grid(row=0)
 
         # Help Button (row 1)
         self.help_button = Button(self.sap_frame, text="Help",
                                   font="Arial 14 bold",
-                                  padx=10, pady=10, command=self.help)
-        self.help_button.grid(row=1)
+                                  command=self.help, bg="pale green")
+        self.help_button.grid(row=1, column=0, padx=2)
+
+        # Play Button (row 1)
+        self.play_button = Button(self.sap_frame, text="Play",
+                                  font="Arial 14 bold", bg="yellow",
+                                  command=self.play)
+        self.play_button.grid(row=2, column=0, padx=2)
 
     def help(self):
         get_help = Help(self)
-        get_help.help_text.configure(text="SPORTS ANALYSIS PROGRAM\n\n"
-                                          "This program allows you to check daily "
-                                          "results, fixtures, times and events for "
-                                          "English Premier League Football.")
+        get_help.help_text.configure(text="ENGLISH PREMIER LEAGUE QUIZ\n\n"
+                                          "This program consists of a bunch of "
+                                          "questions about EPL teams :)")
+
+    def play(self):
+        Game(self)
 
 
 class Help:
@@ -72,6 +81,41 @@ class Help:
         # Put help button back to normal...
         partner.help_button.config(state=NORMAL)
         self.help_box.destroy()
+
+
+class Game:
+    def __init__(self, partner):
+
+        background_colour= "dark orchid"
+        # initialise variables
+        self.balance = IntVar()
+
+        # GUI Setup
+        self.game_box = Toplevel()
+        self.game_frame = Frame(self.game_box)
+        self.game_frame.grid()
+
+        # Heading Row
+        self.heading_label = Label(self.game_frame, text="QUIZ TIME !!!",
+                                   bg=background_colour,
+                                   font="Arial 24 bold", padx=10,
+                                   pady=10)
+        self.heading_label.grid(row=0)
+
+        #EPL ICON
+        self.icon_label = Label(self.game_frame, padx=10, pady=10)
+        self.icon_label.grid(row=0)
+
+        image = Image.open('EPL.gif')
+        image2 = ImageTk.PhotoImage(image)
+        w = image2.width(573)
+        h = image2.height(573)
+        app.geometry('%dx%d+0+0' % (w,h))
+        app.configure(background='image1')
+
+
+
+
 
 # main routine
 if __name__ == "__main__":
