@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter.ttk import *
 from functools import partial   # To prevent unwanted windows
 from PIL import ImageTk,Image
 import random
@@ -8,27 +9,27 @@ class Start:
     def __init__(self):
 
         # Formatting Variables
-        background_colour = "dark orchid"
+        background_colour = "DarkOrchid1"
 
-        # SAP (SPORTS ANALYSIS PROGRAM) Main Screen GUI
-        self.sap_frame = Frame(width=500, height=500, bg=background_colour,
+        # Sports Quiz Main Screen GUI
+        self.sports_quiz_frame = Frame(width=500, height=500, bg=background_colour,
                                pady=10)
-        self.sap_frame.grid()
+        self.sports_quiz_frame.grid()
 
         # SAP Heading (row 0)
-        self.quiz_label = Label(self.sap_frame, text="ENGLISH PREMIER LEAGUE QUIZ",
+        self.quiz_label = Label(self.sports_quiz_frame, text="ENGLISH PREMIER LEAGUE QUIZ",
                                font="Arial 16 bold", bg=background_colour,
                                padx=10, pady=10)
         self.quiz_label.grid(row=0)
 
         # Help Button (row 1)
-        self.help_button = Button(self.sap_frame, text="Help",
+        self.help_button = Button(self.sports_quiz_frame, text="Help",
                                   font="Arial 14 bold",
                                   command=self.help, bg="pale green")
         self.help_button.grid(row=1, column=0, padx=2)
 
         # Play Button (row 1)
-        self.play_button = Button(self.sap_frame, text="Play",
+        self.play_button = Button(self.sports_quiz_frame, text="Play",
                                   font="Arial 14 bold", bg="yellow",
                                   command=self.play)
         self.play_button.grid(row=2, column=0, padx=2)
@@ -86,14 +87,20 @@ class Help:
 class Game:
     def __init__(self, partner):
 
-        background_colour= "dark orchid"
+        background_colour= "DarkOrchid1"
         # initialise variables
         self.balance = IntVar()
 
+        # disable play button
+        partner.play_button.config(state=DISABLED)
+
         # GUI Setup
         self.game_box = Toplevel()
-        self.game_frame = Frame(self.game_box)
+        self.game_frame = Frame(self.game_box, width=300, height=300, bg=background_colour)
         self.game_frame.grid()
+
+        # If users press cross at top, closes help and 'releases' help button
+        self.game_box.protocol('WM_DELETE_WINDOW', partial(self.close_game, partner))
 
         # Heading Row
         self.heading_label = Label(self.game_frame, text="QUIZ TIME !!!",
@@ -102,24 +109,27 @@ class Game:
                                    pady=10)
         self.heading_label.grid(row=0)
 
-        #EPL ICON
-        self.icon_label = Label(self.game_frame, padx=10, pady=10)
-        self.icon_label.grid(row=0)
+        # Club nickname Button
+        photo = PhotoImage(file =  )
+        self.club_nicknames_button = Button(self.game_frame, text= 'Club Nicknames!',
+                                            image = photo).pack(side = BOTTOM)
+        # Stadiums Button
+        # Managers Button
 
-        image = Image.open('EPL.gif')
-        image2 = ImageTk.PhotoImage(image)
-        w = image2.width(573)
-        h = image2.height(573)
-        app.geometry('%dx%d+0+0' % (w,h))
-        app.configure(background='image1')
+        # Dismiss Button (row 2)
+        self.dismiss_button = Button(self.game_frame, text="Dismiss",
+                                     width=10, bg="white", font="arial 10 bold",
+                                     command=partial(self.close_game, partner))
+        self.dismiss_button.grid(row=2, pady=10)
 
-
-
-
+    def close_game(self, partner):
+        # Put Play button back to normal...
+        partner.play_button.config(state=NORMAL)
+        self.game_box.destroy()
 
 # main routine
 if __name__ == "__main__":
     root = Tk()
-    root.title("Sports Analysis Program")
+    root.title("Premier League Quiz Program")
     something = Start()
     root.mainloop()
