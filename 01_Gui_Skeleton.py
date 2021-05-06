@@ -1,5 +1,4 @@
 from tkinter import *
-from tkinter.ttk import *
 from functools import partial   # To prevent unwanted windows
 from PIL import ImageTk,Image
 import random
@@ -13,7 +12,7 @@ class Start:
 
         # Sports Quiz Main Screen GUI
         self.sports_quiz_frame = Frame(width=500, height=500, bg=background_colour,
-                               pady=10)
+                                       pady=10)
         self.sports_quiz_frame.grid()
 
         # SAP Heading (row 0)
@@ -96,31 +95,53 @@ class Game:
 
         # GUI Setup
         self.game_box = Toplevel()
-        self.game_frame = Frame(self.game_box, width=300, height=300, bg=background_colour)
+        self.game_frame = Frame(self.game_box, bg=background_colour)
         self.game_frame.grid()
 
         # If users press cross at top, closes help and 'releases' help button
         self.game_box.protocol('WM_DELETE_WINDOW', partial(self.close_game, partner))
 
         # Heading Row
-        self.heading_label = Label(self.game_frame, text="QUIZ TIME !!!",
+        self.heading_label = Label(self.game_frame, text="QUIZ TIME !!!\n"
+                                                         "Different Topics :)",
                                    bg=background_colour,
                                    font="Arial 24 bold", padx=10,
                                    pady=10)
         self.heading_label.grid(row=0)
 
+        # Brief explanation text
+        self.exp_label = Label(self.game_frame, text="-->Club Nicknames - Pick the correct "
+                                                     "nickname for the club given.\n"
+                                                     "\n-->Stadiums - Pick the correct stadium "
+                                                     "for the club given.\n"
+                                                     "\n-->*Managers - Choose the correct manager "
+                                                     "for the club given.\n"
+                                                     "\n-->Each Topic will consist of 10 questions.\n"
+                                                     "-->Good luck !!!\n",
+                                                     bg=background_colour,
+                                                     font="Arial 17", padx=10, pady=10)
+        self.exp_label.grid(row=1)
+
         # Club nickname Button
-        photo = PhotoImage(file =  )
-        self.club_nicknames_button = Button(self.game_frame, text= 'Club Nicknames!',
-                                            image = photo).pack(side = BOTTOM)
+        self.club_nickname_button = Button(self.game_frame, text="PL Club\n"
+                                                                 "Nicknames",
+                                           width=10, bg="white",
+                                           font="Arial 9")
+        self.club_nickname_button.grid(row=2, column=0, pady=10)
+
         # Stadiums Button
+        self.stadiums_button = Button(self.game_frame, text="PL Club\n"
+                                                            "Stadiums",
+                                      width=10, bg="white",
+                                      font="Arial 9")
+        self.stadiums_button.grid(row=2, column=1, pady=10)
         # Managers Button
 
         # Dismiss Button (row 2)
         self.dismiss_button = Button(self.game_frame, text="Dismiss",
                                      width=10, bg="white", font="arial 10 bold",
                                      command=partial(self.close_game, partner))
-        self.dismiss_button.grid(row=2, pady=10)
+        self.dismiss_button.grid(row=3, pady=10)
 
     def close_game(self, partner):
         # Put Play button back to normal...
