@@ -1,6 +1,6 @@
 from tkinter import *
 from functools import partial   # To prevent unwanted windows
-from PIL import ImageTk,Image
+import ctypes
 import random
 
 
@@ -102,46 +102,65 @@ class Game:
         self.game_box.protocol('WM_DELETE_WINDOW', partial(self.close_game, partner))
 
         # Heading Row
-        self.heading_label = Label(self.game_frame, text="QUIZ TIME !!!\n"
-                                                         "Different Topics :)",
+        self.heading_label = Label(self.game_frame, text="QUIZ TIME !!!",
                                    bg=background_colour,
                                    font="Arial 24 bold", padx=10,
                                    pady=10)
         self.heading_label.grid(row=0)
 
-        # Brief explanation text
-        self.exp_label = Label(self.game_frame, text="-->Club Nicknames - Pick the correct "
-                                                     "nickname for the club given.\n"
-                                                     "\n-->Stadiums - Pick the correct stadium "
-                                                     "for the club given.\n"
-                                                     "\n-->*Managers - Choose the correct manager "
-                                                     "for the club given.\n"
-                                                     "\n-->Each Topic will consist of 10 questions.\n"
-                                                     "-->Good luck !!!\n",
-                                                     bg=background_colour,
-                                                     font="Arial 17", padx=10, pady=10)
-        self.exp_label.grid(row=1)
+        # Brief explanation box
+        ctypes.windll.user32.MessageBoxW(0, "Before you continue !\n These are the different topics:\n"
+                                            "-->Club Nicknames - Pick the correct "
+                                            "nickname for the club given.\n"
+                                            "\n-->Stadiums - Pick the correct stadium "
+                                            "for the club given.\n"
+                                            "\n-->*Managers - Choose the correct manager "
+                                            "for the club given.\n"
+                                            "\n-->Each Topic will consist of 10 questions.\n"
+                                            "-->Good luck !!!\n"
+                                         , "Different topics", 0)
 
+        # Picture frames go here
+        self.picture_frame = Frame(self.game_frame)
+        self.picture_frame.grid(row=1, pady=10)
+
+        photo = PhotoImage(file="Pl nicknames.gif")
+
+        self.picture_label = Label(self.picture_frame,
+                                   image=photo, padx=10, pady=10)
+        self.picture_label.photo = photo
+        self.picture_label.grid(row=2, column=0)
+
+        # Quiz Button frame
+        self.quiz_button_frame = Frame(self.game_frame, bg=background_colour)
+        self.quiz_button_frame.grid(row=2, pady=10)
         # Club nickname Button
-        self.club_nickname_button = Button(self.game_frame, text="PL Club\n"
-                                                                 "Nicknames",
+        self.club_nickname_button = Button(self.quiz_button_frame, text="PL Club\n"
+                                                                        "Nicknames",
                                            width=10, bg="white",
-                                           font="Arial 9")
+                                           font="Arial 9 bold")
         self.club_nickname_button.grid(row=2, column=0, pady=10)
 
         # Stadiums Button
-        self.stadiums_button = Button(self.game_frame, text="PL Club\n"
-                                                            "Stadiums",
+        self.stadiums_button = Button(self.quiz_button_frame, text="PL Club\n"
+                                                                   "Stadiums",
                                       width=10, bg="white",
-                                      font="Arial 9")
+                                      font="Arial 9 bold")
         self.stadiums_button.grid(row=2, column=1, pady=10)
         # Managers Button
+        self.managers_button = Button(self.quiz_button_frame, text="PL Club\n"
+                                                                   "Managers",
+                                      width=10, bg="white", font="Arial 9 bold")
+        self.managers_button.grid(row=2, column=2, pady=10)
 
         # Dismiss Button (row 2)
         self.dismiss_button = Button(self.game_frame, text="Dismiss",
                                      width=10, bg="white", font="arial 10 bold",
                                      command=partial(self.close_game, partner))
         self.dismiss_button.grid(row=3, pady=10)
+
+    # Hover over a button or image to display text message
+
 
     def close_game(self, partner):
         # Put Play button back to normal...
