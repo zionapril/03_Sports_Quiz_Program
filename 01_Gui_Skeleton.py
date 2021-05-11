@@ -1,13 +1,12 @@
 from tkinter import *
 from functools import partial   # To prevent unwanted windows
-import ctypes
 import random
 
 
 class Start:
     def __init__(self):
 
-        background_colour= "DarkOrchid1"
+        background_colour= "#C0C0C0"
         # initialise variables
         self.balance = IntVar()
 
@@ -17,23 +16,11 @@ class Start:
         self.game_frame.grid()
 
         # Heading Row
-        self.heading_label = Label(self.game_frame, text="QUIZ TIME !!!",
+        self.heading_label = Label(self.game_frame, text="Premier League Quiz",
                                    bg=background_colour,
                                    font="Arial 24 bold", padx=10,
                                    pady=10)
         self.heading_label.grid(row=0)
-
-        # Brief explanation box
-        ctypes.windll.user32.MessageBoxW(0, "Before you continue !\n These are the different topics:\n"
-                                            "-->Club Nicknames - Pick the correct "
-                                            "nickname for the club given.\n"
-                                            "\n-->Stadiums - Pick the correct stadium "
-                                            "for the club given.\n"
-                                            "\n-->*Managers - Choose the correct manager "
-                                            "for the club given.\n"
-                                            "\n-->Each Topic will consist of 10 questions.\n"
-                                            "-->Good luck !!!\n"
-                                         , "Different topics", 0)
 
         # Picture frames go here
         self.picture_frame = Frame(self.game_frame)
@@ -68,11 +55,20 @@ class Start:
                                       width=10, bg="white", font="Arial 9 bold")
         self.managers_button.grid(row=2, column=2, pady=10)
 
+        # Help button
+        self.help_button = Button(self.quiz_button_frame, text="Help",
+                                  width=10, bg="white", font="arial 9 bold",
+                                  command=self.help)
+        self.help_button.grid(row=3, column=1, pady=10)
+
+    def help(self):
+        Help(self)
+
 
 class Help:
     def __init__(self, partner):
 
-        background_colour = "pale green"
+        background_colour = "#C0C0C0"
 
         # disable help button
         partner.help_button.config(state=DISABLED)
@@ -93,7 +89,13 @@ class Help:
         self.how_heading.grid(row=0)
 
         # Help Text(label, row 1)
-        self.help_text = Label(self.help_frame, text="",
+        self.help_text = Label(self.help_frame, text="Before you continue !\nThese are the different topics:\n"
+                                                     "Club Nicknames - Pick the correct "
+                                                     "nickname for the club given.\n"
+                                                     "\nStadiums - Pick the correct stadium "
+                                                     "for the club given.\n"
+                                                     "\nEach Topic will consist of 10 questions.\n"
+                                                     "Good luck !!!",
                                justify=LEFT, width=40, bg=background_colour, wrap=250)
         self.help_text.grid(column=0, row=1)
 
