@@ -11,8 +11,7 @@ class Start:
         self.balance = IntVar()
 
         # GUI Setup
-        self.game_box = Toplevel()
-        self.game_frame = Frame(self.game_box, bg=background_colour)
+        self.game_frame = Frame(bg=background_colour)
         self.game_frame.grid()
 
         # Heading Row
@@ -40,7 +39,8 @@ class Start:
         self.club_nickname_button = Button(self.quiz_button_frame, text="PL Club\n"
                                                                         "Nicknames",
                                            width=10, bg="white",
-                                           font="Arial 9 bold")
+                                           font="Arial 9 bold",
+                                           command=self.nickname)
         self.club_nickname_button.grid(row=2, column=0, pady=10)
 
         # Stadiums Button
@@ -63,6 +63,9 @@ class Start:
 
     def help(self):
         Help(self)
+
+    def nickname(self):
+        Nicknames(self)
 
 
 class Help:
@@ -109,6 +112,30 @@ class Help:
         # Put help button back to normal...
         partner.help_button.config(state=NORMAL)
         self.help_box.destroy()
+
+
+class Nicknames:
+    def __init__(self, partner):
+
+        # initialise variables
+        self.balance = IntVar()
+
+        # GUI Setup
+        self.game_box = Toplevel()
+
+        background_colour = "#C0C0C0"
+
+        '''# If users press cross at top, game quits
+        self.game_box.protocol('WM_DELETE_WINDOW', self.to_quit)'''
+        self.game_frame = Frame(self.game_box, bg=background_colour)
+        self.game_frame.grid()
+
+
+        # Heading Row
+        self.heading_label = Label(self.game_frame, text="Premier League Club Nicknames",
+                                   font="Arial 24 bold", padx=10,
+                                   pady=10)
+        self.heading_label.grid(row=0)
 
 
 # main routine
