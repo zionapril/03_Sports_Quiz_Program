@@ -115,10 +115,12 @@ class Help:
 
 
 class Nicknames:
-    def __init__(self, partner):
+    def __init__(self, partner, prompt, answer):
 
         # initialise variables
         self.balance = IntVar()
+        self.prompt = prompt
+        self.answer = answer
 
         # GUI Setup
         self.game_box = Toplevel()
@@ -130,13 +132,21 @@ class Nicknames:
         self.game_frame = Frame(self.game_box, bg=background_colour)
         self.game_frame.grid()
 
-
         # Heading Row
         self.heading_label = Label(self.game_frame, text="Premier League Club Nicknames",
                                    font="Arial 24 bold", padx=10,
                                    pady=10)
         self.heading_label.grid(row=0)
 
+        # Questions
+        question_prompts = ["What is the nickname for Manchester Utd\n"
+                            "(a)Red Devils \n"
+                            "(b)Reds",]
+
+        questions = [
+            Question(question_prompts[0], "a"),
+            Question(question_prompts[1], "b"),
+                    ]
 
 # main routine
 if __name__ == "__main__":
