@@ -148,17 +148,39 @@ class Nicknames:
                                     pady=10)
         self.question_label.grid(row=2, pady=10)
 
-   ''' # Radio buttons
-    def sel():
-       selection = "You selected the option " + str(var.get())
-       label.config(text = selection) 
+        # Check Buttons
+        Checkbutton1 = IntVar()
+        Checkbutton2 = IntVar()
+        Checkbutton3 = IntVar()
 
-    R1 = Radiobutton(root, text="Option 1", variable=var, value=1,
-                        command=sel)
-    R1.pack( anchor= W)
+        Button1 = Checkbutton(self.game_frame, text="Answer 1",
+                              variable= Checkbutton1,
+                              onvalue= 1,
+                              offvalue= 0,
+                              height=2,
+                              width=10)
 
-    label = Label(root)'''
-        
+        Button2 = Checkbutton(self.game_frame, text="Answer 2",
+                              variable= Checkbutton2,
+                              onvalue= 1,
+                              offvalue= 0,
+                              height=2,
+                              width=10)
+
+        Button3 = Checkbutton(self.game_frame, text="Answer 3",
+                              variable= Checkbutton3,
+                              onvalue= 1,
+                              offvalue= 0,
+                              height=2,
+                              width=10)
+
+        Button1.pack()
+        Button2.pack()
+        Button3.pack()
+
+
+
+
 
 # main routine
 if __name__ == "__main__":
