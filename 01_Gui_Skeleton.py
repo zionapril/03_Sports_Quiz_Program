@@ -148,38 +148,39 @@ class Nicknames:
                                     pady=10)
         self.question_label.grid(row=2, pady=10)
 
-        # Check Buttons
-        Checkbutton1 = IntVar()
-        Checkbutton2 = IntVar()
-        Checkbutton3 = IntVar()
+        # Frame and Button for multiple choice answers
+        self.answer_frame = Frame(self.game_frame, bg=background_colour)
+        self.answer_frame.grid(row=3, pady=10)
 
-        Button1 = Checkbutton(self.game_frame, text="Answer 1",
-                              variable= Checkbutton1,
-                              onvalue= 1,
-                              offvalue= 0,
-                              height=2,
-                              width=10)
+        # Answer 1 Button
+        self.answer_1_button = Button(self.answer_frame, text="Answer 1",
+                                      bg="white", width=15,
+                                      height=5,
+                                      font="Arial 10 bold")
+        self.answer_1_button.grid(row=3, column=0, pady=10)
 
-        Button2 = Checkbutton(self.game_frame, text="Answer 2",
-                              variable= Checkbutton2,
-                              onvalue= 1,
-                              offvalue= 0,
-                              height=2,
-                              width=10)
+        # Answer 2 Button
+        self.answer_2_button = Button(self.answer_frame, text="Answer 2",
+                                      bg="white", width=15,
+                                      height=5,
+                                      font="Arial 10 bold")
+        self.answer_2_button.grid(row=3, column=1, pady=10)
 
-        Button3 = Checkbutton(self.game_frame, text="Answer 3",
-                              variable= Checkbutton3,
-                              onvalue= 1,
-                              offvalue= 0,
-                              height=2,
-                              width=10)
+        # Answer 3 Button
+        self.answer_3_button = Button(self.answer_frame, text="Answer 3",
+                                      bg="white", width=15,
+                                      height=5,
+                                      font="Arial 10 bold")
+        self.answer_3_button.grid(row=4, column=0, pady=10)
 
-        Button1.pack()
-        Button2.pack()
-        Button3.pack()
+        # Answer 4 Button
+        self.answer_4_button = Button(self.answer_frame, text="Answer 4",
+                                      bg="white", width=15,
+                                      height=5,
+                                      font="Arial 10 bold")
+        self.answer_4_button.grid(row=4, column=1, pady=10)
 
-
-
+        
 
 
 # main routine
