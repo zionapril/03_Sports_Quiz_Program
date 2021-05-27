@@ -47,12 +47,14 @@ class Start:
         self.stadiums_button = Button(self.quiz_button_frame, text="PL Club\n"
                                                                    "Stadiums",
                                       width=10, bg="white",
-                                      font="Arial 9 bold")
+                                      font="Arial 9 bold",
+                                      command=self.stadium)
         self.stadiums_button.grid(row=2, column=1, pady=10)
         # Managers Button
         self.managers_button = Button(self.quiz_button_frame, text="PL Club\n"
                                                                    "Managers",
-                                      width=10, bg="white", font="Arial 9 bold")
+                                      width=10, bg="white", font="Arial 9 bold",
+                                      command=self.manager)
         self.managers_button.grid(row=2, column=2, pady=10)
 
         # Help button
@@ -66,6 +68,12 @@ class Start:
 
     def nickname(self):
         Nicknames(self)
+
+    def stadium(self):
+        Stadiums(self)
+
+    def manager(self):
+        Managers(self)
 
 
 class Help:
@@ -180,6 +188,139 @@ class Nicknames:
                                       font="Arial 10 bold")
         self.answer_4_button.grid(row=4, column=1, pady=10)
 
+
+class Stadiums:
+    def __init__(self, partner):
+
+        # initialise variables
+        self.balance = IntVar()
+
+        # GUI Setup
+        self.game_box = Toplevel()
+
+        background_colour = "#C0C0C0"
+
+        '''# If users press cross at top, game quits
+        self.game_box.protocol('WM_DELETE_WINDOW', self.to_quit)'''
+        self.game_frame = Frame(self.game_box, bg=background_colour)
+        self.game_frame.grid()
+
+        # Heading Row
+        self.heading_label = Label(self.game_frame, text="Premier League Club Stadiums",
+                                   bg=background_colour,
+                                   font="Arial 24 bold", padx=10,
+                                   pady=10)
+        self.heading_label.grid(row=0)
+
+        # Question Frame
+        self.question_frame = Frame(self.game_frame, bg=background_colour)
+        self.question_frame.grid(row=2, pady=10)
+
+        # Question Label
+        self.question_label = Label(self.question_frame, text="Question",
+                                    bg=background_colour,
+                                    font="Arial 20 bold", padx=10,
+                                    pady=10)
+        self.question_label.grid(row=2, pady=10)
+
+        # Frame and Button for multiple choice answers
+        self.answer_frame = Frame(self.game_frame, bg=background_colour)
+        self.answer_frame.grid(row=3, pady=10)
+
+        # Answer 1 Button
+        self.answer_1_button = Button(self.answer_frame, text="Answer 1",
+                                      bg="white", width=15,
+                                      height=5,
+                                      font="Arial 10 bold")
+        self.answer_1_button.grid(row=3, column=0, pady=10)
+
+        # Answer 2 Button
+        self.answer_2_button = Button(self.answer_frame, text="Answer 2",
+                                      bg="white", width=15,
+                                      height=5,
+                                      font="Arial 10 bold")
+        self.answer_2_button.grid(row=3, column=1, pady=10)
+
+        # Answer 3 Button
+        self.answer_3_button = Button(self.answer_frame, text="Answer 3",
+                                      bg="white", width=15,
+                                      height=5,
+                                      font="Arial 10 bold")
+        self.answer_3_button.grid(row=4, column=0, pady=10)
+
+        # Answer 4 Button
+        self.answer_4_button = Button(self.answer_frame, text="Answer 4",
+                                      bg="white", width=15,
+                                      height=5,
+                                      font="Arial 10 bold")
+        self.answer_4_button.grid(row=4, column=1, pady=10)
+
+
+class Managers:
+    def __init__(self, partner):
+
+        # initialise variables
+        self.balance = IntVar()
+
+        # GUI Setup
+        self.game_box = Toplevel()
+
+        background_colour = "#C0C0C0"
+
+        '''# If users press cross at top, game quits
+        self.game_box.protocol('WM_DELETE_WINDOW', self.to_quit)'''
+        self.game_frame = Frame(self.game_box, bg=background_colour)
+        self.game_frame.grid()
+
+        # Heading Row
+        self.heading_label = Label(self.game_frame, text="Premier League Club Managers",
+                                   bg=background_colour,
+                                   font="Arial 24 bold", padx=10,
+                                   pady=10)
+        self.heading_label.grid(row=0)
+
+        # Question Frame
+        self.question_frame = Frame(self.game_frame, bg=background_colour)
+        self.question_frame.grid(row=2, pady=10)
+
+        # Question Label
+        self.question_label = Label(self.question_frame, text="Question",
+                                    bg=background_colour,
+                                    font="Arial 20 bold", padx=10,
+                                    pady=10)
+        self.question_label.grid(row=2, pady=10)
+
+        # Frame and Button for multiple choice answers
+        self.answer_frame = Frame(self.game_frame, bg=background_colour)
+        self.answer_frame.grid(row=3, pady=10)
+
+        # Answer 1 Button
+        self.answer_1_button = Button(self.answer_frame, text="Answer 1",
+                                      bg="white", width=15,
+                                      height=5,
+                                      font="Arial 10 bold")
+        self.answer_1_button.grid(row=3, column=0, pady=10)
+
+        # Answer 2 Button
+        self.answer_2_button = Button(self.answer_frame, text="Answer 2",
+                                      bg="white", width=15,
+                                      height=5,
+                                      font="Arial 10 bold")
+        self.answer_2_button.grid(row=3, column=1, pady=10)
+
+        # Answer 3 Button
+        self.answer_3_button = Button(self.answer_frame, text="Answer 3",
+                                      bg="white", width=15,
+                                      height=5,
+                                      font="Arial 10 bold")
+        self.answer_3_button.grid(row=4, column=0, pady=10)
+
+        # Answer 4 Button
+        self.answer_4_button = Button(self.answer_frame, text="Answer 4",
+                                      bg="white", width=15,
+                                      height=5,
+                                      font="Arial 10 bold")
+        self.answer_4_button.grid(row=4, column=1, pady=10)
         
 
 
