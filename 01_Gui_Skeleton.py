@@ -123,7 +123,9 @@ class Help:
 
 
 class Nicknames:
-    def __init__(self, partner):
+    def __init__(self, partner, prompt, answer):
+        self.prompt = prompt
+        self.answer = answer
 
         # initialise variables
         self.balance = IntVar()
