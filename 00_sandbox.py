@@ -28,6 +28,3 @@ for item in range(1, 10):
 
     print(question)
     print(answer)
-
-
-     

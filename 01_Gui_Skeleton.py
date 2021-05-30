@@ -123,9 +123,7 @@ class Help:
 
 
 class Nicknames:
-    def __init__(self, partner, prompt, answer):
-        self.prompt = prompt
-        self.answer = answer
+    def __init__(self, partner):
 
         # initialise variables
         self.balance = IntVar()
@@ -166,7 +164,8 @@ class Nicknames:
         self.answer_1_button = Button(self.answer_frame, text="Answer 1",
                                       bg="white", width=15,
                                       height=5,
-                                      font="Arial 10 bold")
+                                      font="Arial 10 bold",
+                                      command = self.button1pressed)
         self.answer_1_button.grid(row=3, column=0, pady=10)
 
         # Answer 2 Button
@@ -189,6 +188,14 @@ class Nicknames:
                                       height=5,
                                       font="Arial 10 bold")
         self.answer_4_button.grid(row=4, column=1, pady=10)
+
+    def button1pressed(self):
+        self.label_1= Label(self.answer_frame, text = "Button1pressed!",
+                            font="Arial 10 bold")
+        self.label_1.grid(row = 1, column = 0, padx=20, pady=20)
+
+
+
 
 
 class Stadiums:
@@ -324,7 +331,6 @@ class Managers:
                                       font="Arial 10 bold")
         self.answer_4_button.grid(row=4, column=1, pady=10)
         
-
 
 # main routine
 if __name__ == "__main__":
