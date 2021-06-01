@@ -165,37 +165,51 @@ class Nicknames:
                                       bg="white", width=15,
                                       height=5,
                                       font="Arial 10 bold",
-                                      command = self.button1pressed)
+                                      command = self.buttonpressed)
         self.answer_1_button.grid(row=3, column=0, pady=10)
 
         # Answer 2 Button
         self.answer_2_button = Button(self.answer_frame, text="Answer 2",
                                       bg="white", width=15,
                                       height=5,
-                                      font="Arial 10 bold")
+                                      font="Arial 10 bold",
+                                      command = self.buttonpressed)
         self.answer_2_button.grid(row=3, column=1, pady=10)
 
         # Answer 3 Button
         self.answer_3_button = Button(self.answer_frame, text="Answer 3",
                                       bg="white", width=15,
                                       height=5,
-                                      font="Arial 10 bold")
+                                      font="Arial 10 bold",
+                                      command = self.buttonpressed)
         self.answer_3_button.grid(row=4, column=0, pady=10)
 
         # Answer 4 Button
         self.answer_4_button = Button(self.answer_frame, text="Answer 4",
                                       bg="white", width=15,
                                       height=5,
-                                      font="Arial 10 bold")
+                                      font="Arial 10 bold",
+                                      command = self.buttonpressed)
         self.answer_4_button.grid(row=4, column=1, pady=10)
 
-    def button1pressed(self):
-        self.label_1= Label(self.answer_frame, text = "Button1pressed!",
+        # Next Question Button
+        self.next_question_btn = Button(self.answer_frame, text="Next Question",
+                                        bg="white", width=11, height=1,
+                                        font="Arial 10 bold",
+                                        command = self.nextquestion)
+        self.next_question_btn.grid(row=5, column=0, pady=10)
+
+    def buttonpressed(self):
+        self.label_1= Label(self.answer_frame, text = "Buttonpressed!",
                             font="Arial 10 bold")
-        self.label_1.grid(row = 1, column = 0, padx=20, pady=20)
+        self.label_1.grid(row = 2, padx=20, pady=20)
 
-
-
+    def nextquestion(self):
+         self.question_label = Label(self.question_frame, text="Question1",
+                                     bg="#C0C0C0",
+                                     font="Arial 20 bold", padx=10,
+                                     pady=10)
+         self.question_label.grid(row=2, pady=10)
 
 
 class Stadiums:
@@ -264,6 +278,12 @@ class Stadiums:
                                       font="Arial 10 bold")
         self.answer_4_button.grid(row=4, column=1, pady=10)
 
+        # Next Question Button
+        self.next_question_btn = Button(self.answer_frame, text="Next Question",
+                                        bg="white", width=11, height=1,
+                                        font="Arial 10 bold")
+        self.next_question_btn.grid(row=5, column=0, pady=10)
+
 
 class Managers:
     def __init__(self, partner):
@@ -330,6 +350,12 @@ class Managers:
                                       height=5,
                                       font="Arial 10 bold")
         self.answer_4_button.grid(row=4, column=1, pady=10)
+
+        # Next Question Button
+        self.next_question_btn = Button(self.answer_frame, text="Next Question",
+                                        bg="white", width=11, height=1,
+                                        font="Arial 10 bold")
+        self.next_question_btn.grid(row=5, column=0, pady=10)
         
 
 # main routine
