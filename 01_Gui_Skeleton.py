@@ -205,11 +205,18 @@ class Nicknames:
         self.label_1.grid(row = 2, padx=20, pady=20)
 
     def nextquestion(self):
-         self.question_label = Label(self.question_frame, text="Question1",
+         self.question_label = Label(self.question_frame, text="Next Question",
                                      bg="#C0C0C0",
                                      font="Arial 20 bold", padx=10,
                                      pady=10)
          self.question_label.grid(row=2, pady=10)
+
+         self.answer_1_button = Button(self.answer_frame, text="Answer 1",
+                                      bg="white", width=15,
+                                      height=5,
+                                      font="Arial 10 bold",
+                                      command = self.buttonpressed)
+         self.answer_1_button.grid(row=3, column=0, pady=10)
 
 
 class Stadiums:
