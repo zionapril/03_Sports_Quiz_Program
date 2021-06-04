@@ -196,7 +196,8 @@ class Nicknames:
         self.next_question_btn = Button(self.answer_frame, text="Next Question",
                                         bg="white", width=11, height=1,
                                         font="Arial 10 bold",
-                                        command = self.nextquestion)
+                                        command = self.nextquestion
+                                        )
         self.next_question_btn.grid(row=5, column=0, pady=10)
 
     def buttonpressed(self):
@@ -217,6 +218,10 @@ class Nicknames:
                                       font="Arial 10 bold",
                                       command = self.buttonpressed)
          self.answer_1_button.grid(row=3, column=0, pady=10)
+
+
+
+         
 
 
 class Stadiums:
