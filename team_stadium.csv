@@ -1,21 +1,21 @@
-﻿Team,Stadium,Nickname,Location
-Arsenal ,Emirates Stadium ,The Gunners,
-Aston Villa ,Villa Park ,"The Villans, The Villa, Villa",
-Brighton & Hove Albion ,Falmer Stadium ,"The Seagulls, The Albion",
-Burnley ,Turf Moor ,The Clarets,
-Chelsea ,Stamford Bridge ,"The Blues, The Pensioners",
-Crystal Palace ,Selhurst Park ,"The Eagles, The Glaziers",
-Everton ,Goodison Park ,"The Blues, The Toffees, The People's Club",
-Fulham ,Craven Cottage ,"Cottagers, Whites, Black and White army",
-Leeds United ,Elland Road ,"The Whites, United, The Peacocks",
-Leicester City ,King Power Stadium ,The Foxes,
-Liverpool ,Anfield ,The Reds,
-Manchester City ,City of Manchester Stadium ,"The Citizens, City, The Sky Blues",
-Manchester United ,Old Trafford ,The Red Devils,
-Newcastle United ,St James' Park ,"The Magpies, Geordies",
-Sheffield United ,Bramall Lane ,"The Blades, Red and White Wizards",
-Southampton ,St Mary's Stadium ,The Saints,
-Tottenham Hotspur ,Tottenham Hotspur Stadium ,"The Baggies, The Throstles, Albion",
-West Bromwich Albion ,The Hawthorns ,"The Irons, The Hammers, The Academy Of Football",
-West Ham United ,London Stadium ,"Wolves, The Wanderers",
-Wolverhampton Wanderers ,Molineux Stadium ,,
+﻿Team,Stadium,Nickname Clue,Nickname
+Arsenal ,Emirates Stadium ,,The Gunners
+Aston Villa ,Villa Park ,"One word, 5 letters",Villa
+Brighton & Hove Albion ,Falmer Stadium ,"The bird, not the place",The Seagulls
+Burnley ,Turf Moor ,,The Clarets
+Chelsea ,Stamford Bridge ,The colour,The Blues
+Crystal Palace ,Selhurst Park ,The bird,The Eagles
+Everton ,Goodison Park ,The sweet treat,The Toffees
+Fulham ,Craven Cottage ,Colour of kit,Whites
+Leeds United ,Elland Road ,8 lettered animal,The Peacocks
+Leicester City ,King Power Stadium ,Animal On the badge,The Foxes
+Liverpool ,Anfield ,Colour of kit,The Reds
+Manchester City ,City of Manchester Stadium ,,City
+Manchester United ,Old Trafford ,,The Red Devils
+Newcastle United ,St James' Park ,,The Magpies
+Sheffield United ,Bramall Lane ,,The Blades
+Southampton ,St Mary's Stadium ,,The Saints
+Tottenham Hotspur ,Tottenham Hotspur Stadium ,,Spurs
+West Bromwich Albion ,The Hawthorns ,,The Hammers
+West Ham United ,London Stadium ,,Albion
+Wolverhampton Wanderers ,Molineux Stadium ,,The Wanderers

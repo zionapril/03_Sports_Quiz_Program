@@ -197,7 +197,7 @@ class Nicknames:
         self.next_question_btn.grid(row=5, column=0, pady=10)
 
     def nextquestion(self):
-         self.question_label = Label(self.question_frame, text="U",
+         self.question_label = Label(self.question_frame, text="",
                                      bg="#C0C0C0",
                                      font="Arial 20 bold", padx=10,
                                      pady=10)
