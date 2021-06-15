@@ -13,7 +13,7 @@ data = [
 ['Leeds United ', 'Elland Road ', '8 lettered animal', 'The Peacocks'],
 ['Leicester City ', 'King Power Stadium ', 'Animal On the badge', 'The Foxes'],
 ['Liverpool ', 'Anfield ', 'Colour of kit', 'The Reds'],
-['Manchester City ', 'City of Manchester Stadium ', '', 'City'],
+['Manchester City ', 'Etihad Stadium ', '', 'City'],
 ['Manchester United ', 'Old Trafford ', '', 'The Red Devils'],
 ['Newcastle United ', "St James' Park ", '', 'The Magpies'],
 ['Sheffield United ', 'Bramall Lane ', '', 'The Blades'],
@@ -46,7 +46,7 @@ for item in range(1, 3):
         q_ans_index = 3
         question = "What team is associated with {}? ".format(question_answer[3])
     else:
-        question = "Hints available: {}? ".format(question_answer[2])
+        question = "Hints available: {} ".format(question_answer[2])
         q_ans_index = 2
 
     for item in range(0,3):

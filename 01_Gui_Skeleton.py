@@ -1,6 +1,11 @@
 from tkinter import *
 from functools import partial   # To prevent unwanted windows
 import random
+import csv
+
+with open('03_Sports_Quiz_Program\\team_stadium.csv', newline='') as f:
+    reader = csv.reader(f)
+    data = list(reader)
 
 
 class Start:
@@ -138,6 +143,50 @@ class Nicknames:
         self.game_frame = Frame(self.game_box, bg=background_colour)
         self.game_frame.grid()
 
+        question_cat = [
+            "team", "stadium", "nickname clue", "nickname"
+        ]
+
+        for item in range(1, 4):
+            question_answer = random.choice(data)
+
+            category_choice = random.choice(question_cat)
+            answer = question_answer[0]
+
+            answer_choices = []
+
+            if category_choice == "team":
+                q_ans_index = 1
+                question = "What team plays in {}? ".format(question_answer[1])
+                question_1 = question
+            
+
+            elif category_choice == "nickname":
+                q_ans_index = 3
+                question = "What team is associated with {}? ".format(question_answer[3])
+            else:
+                question = "Hints available: {} ".format(question_answer[2])
+                q_ans_index = 2
+
+            for item in range(0,4):
+                answer_options = random.choice(data)
+                print("Answer options row", answer_options)
+                ans_opt = answer_options[0]
+                print("Answer Option", ans_opt)
+                answer_choices.append(ans_opt)
+                print()
+
+            answer_choices.append(answer)
+
+            print(question)
+            print(answer)
+
+            print()
+            print("Choices...")
+            print(answer_choices)
+
+            
+
         # Heading Row
         self.heading_label = Label(self.game_frame, text="Premier League Club Nicknames",
                                    bg=background_colour,
@@ -150,7 +199,7 @@ class Nicknames:
         self.question_frame.grid(row=2, pady=10)
 
         # Question Label
-        self.question_label = Label(self.question_frame, text="What is Man U Nickname ?",
+        self.question_label = Label(self.question_frame, text=question_1,
                                     bg=background_colour,
                                     font="Arial 20 bold", padx=10,
                                     pady=10)
@@ -161,28 +210,28 @@ class Nicknames:
         self.answer_frame.grid(row=3, pady=10)
 
         # Answer 1 Button
-        self.answer_1_button = Button(self.answer_frame, text="Red Devils",
+        self.answer_1_button = Button(self.answer_frame, text=ans_opt,
                                       bg="white", width=15,
                                       height=5,
                                       font="Arial 10 bold")
         self.answer_1_button.grid(row=3, column=0, pady=10)
 
         # Answer 2 Button
-        self.answer_2_button = Button(self.answer_frame, text="Reds",
+        self.answer_2_button = Button(self.answer_frame, text="",
                                       bg="white", width=15,
                                       height=5,
                                       font="Arial 10 bold")
         self.answer_2_button.grid(row=3, column=1, pady=10)
 
         # Answer 3 Button
-        self.answer_3_button = Button(self.answer_frame, text="Devils",
+        self.answer_3_button = Button(self.answer_frame, text="",
                                       bg="white", width=15,
                                       height=5,
                                       font="Arial 10 bold")
         self.answer_3_button.grid(row=4, column=0, pady=10)
 
         # Answer 4 Button
-        self.answer_4_button = Button(self.answer_frame, text="Gunners",
+        self.answer_4_button = Button(self.answer_frame, text="",
                                       bg="white", width=15,
                                       height=5,
                                       font="Arial 10 bold")
