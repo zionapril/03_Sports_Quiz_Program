@@ -141,51 +141,7 @@ class Nicknames:
         '''# If users press cross at top, game quits
         self.game_box.protocol('WM_DELETE_WINDOW', self.to_quit)'''
         self.game_frame = Frame(self.game_box, bg=background_colour)
-        self.game_frame.grid()
-
-        question_cat = [
-            "team", "stadium", "nickname clue", "nickname"
-        ]
-
-        for item in range(1, 4):
-            question_answer = random.choice(data)
-
-            category_choice = random.choice(question_cat)
-            answer = question_answer[0]
-
-            answer_choices = []
-
-            if category_choice == "team":
-                q_ans_index = 1
-                question = "What team plays in {}? ".format(question_answer[1])
-                question_1 = question
-            
-
-            elif category_choice == "nickname":
-                q_ans_index = 3
-                question = "What team is associated with {}? ".format(question_answer[3])
-            else:
-                question = "Hints available: {} ".format(question_answer[2])
-                q_ans_index = 2
-
-            for item in range(0,4):
-                answer_options = random.choice(data)
-                print("Answer options row", answer_options)
-                ans_opt = answer_options[0]
-                print("Answer Option", ans_opt)
-                answer_choices.append(ans_opt)
-                print()
-
-            answer_choices.append(answer)
-
-            print(question)
-            print(answer)
-
-            print()
-            print("Choices...")
-            print(answer_choices)
-
-            
+        self.game_frame.grid()           
 
         # Heading Row
         self.heading_label = Label(self.game_frame, text="Premier League Club Nicknames",
@@ -199,7 +155,7 @@ class Nicknames:
         self.question_frame.grid(row=2, pady=10)
 
         # Question Label
-        self.question_label = Label(self.question_frame, text=question_1,
+        self.question_label = Label(self.question_frame, text="Push 'next' to start",
                                     bg=background_colour,
                                     font="Arial 20 bold", padx=10,
                                     pady=10)
@@ -210,7 +166,7 @@ class Nicknames:
         self.answer_frame.grid(row=3, pady=10)
 
         # Answer 1 Button
-        self.answer_1_button = Button(self.answer_frame, text=ans_opt,
+        self.answer_1_button = Button(self.answer_frame, text="",
                                       bg="white", width=15,
                                       height=5,
                                       font="Arial 10 bold")
@@ -246,16 +202,65 @@ class Nicknames:
         self.next_question_btn.grid(row=5, column=0, pady=10)
 
     def nextquestion(self):
-         self.question_label = Label(self.question_frame, text="",
-                                     bg="#C0C0C0",
-                                     font="Arial 20 bold", padx=10,
-                                     pady=10)
-         self.question_label.grid(row=2, pady=10)
+        #  self.question_label = Label(self.question_frame, text="",
+        #                              bg="#C0C0C0",
+        #                              font="Arial 20 bold", padx=10,
+        #                              pady=10)
+        #  self.question_label.grid(row=2, pady=10)
 
+        question_cat = [
+            "team", "stadium", "nickname"
+        ]
 
+        for item in range(1, 4):
+            question_answer = random.choice(data)
 
+            category_choice = random.choice(question_cat)
+            answer = question_answer[0]
 
-         
+            answer_choices = []
+
+            if category_choice == "team":
+                q_ans_index = 1
+                question = "What team plays in {}? ".format(question_answer[1])
+                team_q = question
+            
+
+            elif category_choice == "nickname":
+                q_ans_index = 3
+                to_ask = "What is {}'s nickname? ".format(question_answer[0])
+                hint = question_answer[2]
+                question = "{} Hint: {}".format(to_ask, hint)
+                correct_answer = question_answer[3]
+                nickname_q = question
+            else:
+                question = "Which team is based in {}".format(question_answer[1])
+                correct_answer = question_answer[0]
+                q_ans_index = 2
+
+            self.question_label.config(text=question)
+
+            for item in range(0,3):
+                answer_options = random.choice(data)
+                # Row which includes the team, stadium, nickname
+                print("Answer options row", answer_options)
+                print("answer 1: {}".format)(answer_choices[0])
+                ans_opt = answer_options[0]
+                # Answer 
+                print("Answer Option", ans_opt)
+                # Answer choices (4) which go to answer buttons
+                answer_choices.append(ans_opt)
+                print()
+
+            answer_choices.append(answer)
+
+            print(question)
+            print(answer)
+
+            print()
+            print("Choices...")
+            print(answer_choices)
+
 
 
 class Stadiums:
@@ -274,6 +279,49 @@ class Stadiums:
         self.game_frame = Frame(self.game_box, bg=background_colour)
         self.game_frame.grid()
 
+        question_cat = [
+            "team", "stadium", "nickname clue", "nickname"
+        ]
+
+        for item in range(1, 4):
+            question_answer = random.choice(data)
+
+            category_choice = random.choice(question_cat)
+            answer = question_answer[0]
+
+            answer_choices = []
+
+            if category_choice == "team":
+                q_ans_index = 1
+                question = "What team plays in {}? ".format(question_answer[1])
+                team_q = question
+            
+
+            elif category_choice == "nickname":
+                q_ans_index = 3
+                question = "What team is associated with {}? ".format(question_answer[3])
+                nickname_q = question
+            else:
+                question = "Hints available: {} ".format(question_answer[2])
+                q_ans_index = 2
+
+            for item in range(0,4):
+                answer_options = random.choice(data)
+                print("Answer options row", answer_options)
+                ans_opt = answer_options[0]
+                print("Answer Option", ans_opt)
+                answer_choices.append(ans_opt)
+                print()
+
+            answer_choices.append(answer)
+
+            print(question)
+            print(answer)
+
+            print()
+            print("Choices...")
+            print(answer_choices)
+
         # Heading Row
         self.heading_label = Label(self.game_frame, text="Premier League Club Stadiums",
                                    bg=background_colour,
@@ -286,7 +334,7 @@ class Stadiums:
         self.question_frame.grid(row=2, pady=10)
 
         # Question Label
-        self.question_label = Label(self.question_frame, text="Question",
+        self.question_label = Label(self.question_frame, text=team_q,
                                     bg=background_colour,
                                     font="Arial 20 bold", padx=10,
                                     pady=10)
