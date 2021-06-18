@@ -14,7 +14,7 @@ question_cat = [
 
 
 for item in range(1, 10):
-    question_answer = random.choice(data)
+    question_answer = random.choice(data[1:])
 
     category_choice = random.choice(question_cat)
     answer = question_answer[0]

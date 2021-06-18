@@ -241,18 +241,27 @@ class Nicknames:
             self.question_label.config(text=question)
 
             for item in range(0,3):
-                answer_options = random.choice(data)
-                # Row which includes the team, stadium, nickname
-                print("Answer options row", answer_options)
-                print("answer 1: {}".format)(answer_choices[0])
-                ans_opt = answer_options[0]
-                # Answer 
-                print("Answer Option", ans_opt)
-                # Answer choices (4) which go to answer buttons
+                answer_options = random.choice(data[1:])
+
+                if category_choice == "nickname":
+                    ans_opt = answer_options[3]
+                else:
+                    ans_opt = answer_options[0]
+
+
+                # # Row which includes the team, stadium, nickname
+                # print("Answer options row", answer_options)
+                # ans_opt = answer_options[0]
+                # # Answer 
+                # print("Answer Option", ans_opt)
+                # # Answer choices (4) which go to answer buttons
+
                 answer_choices.append(ans_opt)
                 print()
 
-            answer_choices.append(answer)
+            answer_choices.append(correct_answer)
+
+            print("options", answer_options)
 
             print(question)
             print(answer)
@@ -260,6 +269,12 @@ class Nicknames:
             print()
             print("Choices...")
             print(answer_choices)
+
+            self.answer_1_button.config(text="{}".format(answer_choices[0]))
+            self.answer_2_button.config(text="{}".format(answer_choices[1]))
+            self.answer_3_button.config(text="{}".format(answer_choices[2]))
+            self.answer_4_button.config(text="{}".format(answer_choices[3]))
+
 
 
 
