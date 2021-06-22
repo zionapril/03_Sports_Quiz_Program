@@ -2,6 +2,7 @@ from tkinter import *
 from functools import partial, wraps   # To prevent unwanted windows
 import random
 import csv
+from random import shuffle
 
 with open('03_Sports_Quiz_Program\\team_stadium.csv', newline='') as f:
     reader = csv.reader(f)
@@ -187,6 +188,8 @@ class Play:
         #                              pady=10)
         #  self.question_label.grid(row=2, pady=10)
 
+        correct_answer = ""
+
         question_cat = [
             "team", "stadium", "nickname"
         ]
@@ -195,7 +198,10 @@ class Play:
             question_answer = random.choice(data)
 
             category_choice = random.choice(question_cat)
-            answer = question_answer[0]
+            if category_choice == "team":
+                answer = question_answer[0]
+            else:
+                answer = question_answer[3]
 
             answer_choices = []
 
@@ -227,18 +233,17 @@ class Play:
                 else:
                     ans_opt = answer_options[0]
 
-
                 # # Row which includes the team, stadium, nickname
                 # print("Answer options row", answer_options)
                 # ans_opt = answer_options[0]
                 # # Answer 
                 # print("Answer Option", ans_opt)
                 # # Answer choices (4) which go to answer buttons
-
                 answer_choices.append(ans_opt)
                 print()
 
             answer_choices.append(correct_answer)
+            
 
             print("options", answer_options)
 
@@ -248,7 +253,6 @@ class Play:
             print()
             print("Choices...")
             print(answer_choices)
-
             self.answer_1_button.config(text="{}".format(answer_choices[0]))
             self.answer_2_button.config(text="{}".format(answer_choices[1]))
             self.answer_3_button.config(text="{}".format(answer_choices[2]))
