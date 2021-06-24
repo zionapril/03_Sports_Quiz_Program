@@ -4,7 +4,11 @@ import random
 import csv
 from random import shuffle
 
-with open('03_Sports_Quiz_Program\\team_stadium.csv', newline='') as f:
+# with open('03_Sports_Quiz_Program\\team_stadium.csv', newline='') as f:
+#     reader = csv.reader(f)
+#     data = list(reader)
+
+with open('team_stadium.csv', newline='') as f:
     reader = csv.reader(f)
     data = list(reader)
 
@@ -189,13 +193,14 @@ class Play:
         #  self.question_label.grid(row=2, pady=10)
 
         correct_answer = ""
+        answer_options = ""
 
         question_cat = [
             "team", "stadium", "nickname"
         ]
 
         for item in range(1, 4):
-            question_answer = random.choice(data)
+            question_answer = random.choice(data[1:])
 
             category_choice = random.choice(question_cat)
             if category_choice == "team":
@@ -209,7 +214,6 @@ class Play:
                 q_ans_index = 1
                 question = "What team plays in {}? ".format(question_answer[1])
                 team_q = question
-            
 
             elif category_choice == "nickname":
                 q_ans_index = 3
@@ -225,7 +229,7 @@ class Play:
 
             self.question_label.config(text=question)
 
-            for item in range(0,3):
+            for item in range(0, 3):
                 answer_options = random.choice(data[1:])
 
                 if category_choice == "nickname":
@@ -243,12 +247,11 @@ class Play:
                 print()
 
             answer_choices.append(correct_answer)
-            
 
             print("options", answer_options)
 
             print(question)
-            print(answer)
+            print("Answer: ",answer)
 
             print()
             print("Choices...")
