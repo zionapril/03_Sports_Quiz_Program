@@ -198,67 +198,67 @@ class Play:
             "team", "stadium", "nickname"
         ]
 
-        for item in range(1, 4):
-            question_answer = random.choice(data[1:])
 
-            category_choice = random.choice(question_cat)
-            if category_choice == "team":
-                answer = question_answer[0]
+        question_answer = random.choice(data[1:])
+
+        category_choice = random.choice(question_cat)
+        if category_choice == "team":
+            answer = question_answer[0]
+        else:
+            answer = question_answer[3]
+
+        answer_choices = []
+
+        if category_choice == "team":
+            q_ans_index = 1
+            question = "What team plays in {}? ".format(question_answer[1])
+            team_q = question
+
+        elif category_choice == "nickname":
+            q_ans_index = 3
+            to_ask = "What is {}'s nickname? ".format(question_answer[0])
+            hint = question_answer[2]
+            question = "{} Hint: {}".format(to_ask, hint)
+            correct_answer = question_answer[3]
+            nickname_q = question
+        else:
+            question = "Which team is based in {}".format(question_answer[1])
+            correct_answer = question_answer[0]
+            q_ans_index = 2
+
+        self.question_label.config(text=question)
+
+        for item in range(0, 3):
+            answer_options = random.choice(data[1:])
+
+            if category_choice == "nickname":
+                ans_opt = answer_options[3]
             else:
-                answer = question_answer[3]
+                ans_opt = answer_options[0]
 
-            answer_choices = []
-
-            if category_choice == "team":
-                q_ans_index = 1
-                question = "What team plays in {}? ".format(question_answer[1])
-                team_q = question
-
-            elif category_choice == "nickname":
-                q_ans_index = 3
-                to_ask = "What is {}'s nickname? ".format(question_answer[0])
-                hint = question_answer[2]
-                question = "{} Hint: {}".format(to_ask, hint)
-                correct_answer = question_answer[3]
-                nickname_q = question
-            else:
-                question = "Which team is based in {}".format(question_answer[1])
-                correct_answer = question_answer[0]
-                q_ans_index = 2
-
-            self.question_label.config(text=question)
-
-            for item in range(0, 3):
-                answer_options = random.choice(data[1:])
-
-                if category_choice == "nickname":
-                    ans_opt = answer_options[3]
-                else:
-                    ans_opt = answer_options[0]
-
-                # # Row which includes the team, stadium, nickname
-                # print("Answer options row", answer_options)
-                # ans_opt = answer_options[0]
-                # # Answer
-                # print("Answer Option", ans_opt)
-                # # Answer choices (4) which go to answer buttons
-                answer_choices.append(ans_opt)
-                print()
-
-            answer_choices.append(correct_answer)
-
-            print("Answer Row:", answer_choices)
-
-            print(question)
-            print("Answer: ",answer)
-
+            # # Row which includes the team, stadium, nickname
+            # print("Answer options row", answer_options)
+            # ans_opt = answer_options[0]
+            # # Answer
+            # print("Answer Option", ans_opt)
+            # # Answer choices (4) which go to answer buttons
+            answer_choices.append(ans_opt)
             print()
-            print("Choices...")
-            print(answer_choices)
-            self.answer_1_button.config(text="{}".format(answer_choices[0]))
-            self.answer_2_button.config(text="{}".format(answer_choices[1]))
-            self.answer_3_button.config(text="{}".format(answer_choices[2]))
-            self.answer_4_button.config(text="{}".format(answer_choices[3]))
+
+        answer_choices.append(correct_answer)
+
+        print("Answer Row:", answer_choices)
+
+        print(question)
+        print("Answer: ",answer)
+
+        print()
+        print("Choices...")
+        print(answer_choices)
+        self.answer_1_button.config(text="{}".format(answer_choices[0]))
+        self.answer_2_button.config(text="{}".format(answer_choices[1]))
+        self.answer_3_button.config(text="{}".format(answer_choices[2]))
+        self.answer_4_button.config(text="{}".format(answer_choices[3]))
 
 
 # main routine
