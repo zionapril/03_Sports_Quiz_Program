@@ -2,7 +2,6 @@ from tkinter import *
 from functools import partial, wraps   # To prevent unwanted windows
 import random
 import csv
-from random import shuffle
 
 # with open('03_Sports_Quiz_Program\\team_stadium.csv', newline='') as f:
 #     reader = csv.reader(f)
@@ -157,21 +156,21 @@ class Play:
         self.answer_1_button.grid(row=3, column=0, pady=10)
 
         # Answer 2 Button
-        self.answer_2_button = Button(self.answer_frame, text="",
+        self.answer_2_button = Button(self.answer_frame, text="", wrap=100,
                                       bg="white", width=15,
                                       height=5,
                                       font="Arial 10 bold")
         self.answer_2_button.grid(row=3, column=1, pady=10)
 
         # Answer 3 Button
-        self.answer_3_button = Button(self.answer_frame, text="",
+        self.answer_3_button = Button(self.answer_frame, text="", wrap=100,
                                       bg="white", width=15,
                                       height=5,
                                       font="Arial 10 bold")
         self.answer_3_button.grid(row=4, column=0, pady=10)
 
         # Answer 4 Button
-        self.answer_4_button = Button(self.answer_frame, text="",
+        self.answer_4_button = Button(self.answer_frame, text="", wrap=100,
                                       bg="white", width=15,
                                       height=5,
                                       font="Arial 10 bold")
@@ -240,7 +239,7 @@ class Play:
                 # # Row which includes the team, stadium, nickname
                 # print("Answer options row", answer_options)
                 # ans_opt = answer_options[0]
-                # # Answer 
+                # # Answer
                 # print("Answer Option", ans_opt)
                 # # Answer choices (4) which go to answer buttons
                 answer_choices.append(ans_opt)
@@ -248,7 +247,7 @@ class Play:
 
             answer_choices.append(correct_answer)
 
-            print("options", answer_options)
+            print("Answer Row:", answer_options)
 
             print(question)
             print("Answer: ",answer)
