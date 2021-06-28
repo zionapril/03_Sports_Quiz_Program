@@ -3,6 +3,7 @@ from functools import partial, wraps   # To prevent unwanted windows
 import random
 import csv
 
+
 # with open('03_Sports_Quiz_Program\\team_stadium.csv', newline='') as f:
 #     reader = csv.reader(f)
 #     data = list(reader)
@@ -10,6 +11,8 @@ import csv
 with open('team_stadium.csv', newline='') as f:
     reader = csv.reader(f)
     data = list(reader)
+    random.shuffle(data[1:])
+
 
 
 class Start:
@@ -102,7 +105,7 @@ class Help:
         self.dismiss_button = Button(self.help_frame, text="Dismiss",
                                      width=10, bg="white", font="arial 10 bold",
                                      command=partial(self.close_help, partner))
-        self.dismiss_button.grid(row=2,pady=10)
+        self.dismiss_button.grid(row=2, pady=10)
 
     def close_help(self, partner):
         # Put help button back to normal...
@@ -180,11 +183,11 @@ class Play:
         self.next_question_btn = Button(self.answer_frame, text="Next Question",
                                         bg="white", width=11, height=1,
                                         font="Arial 10 bold",
-                                        command = self.nextquestion
+                                        command=self.next_question
                                         )
         self.next_question_btn.grid(row=5, column=0, pady=10)
 
-    def nextquestion(self):
+    def next_question(self):
         #  self.question_label = Label(self.question_frame, text="",
         #                              bg="#C0C0C0",
         #                              font="Arial 20 bold", padx=10,
@@ -197,7 +200,6 @@ class Play:
         question_cat = [
             "team", "stadium", "nickname"
         ]
-
 
         question_answer = random.choice(data[1:])
 
@@ -212,6 +214,12 @@ class Play:
         if category_choice == "team":
             q_ans_index = 1
             question = "What team plays in {}? ".format(question_answer[1])
+            correct_answer = question_answer[0]
+            print(question)
+            print("Answer: ", correct_answer)
+            print("Choices...")
+            answer_choices.append(correct_answer)
+            print(answer_choices)
             team_q = question
 
         elif category_choice == "nickname":
@@ -220,10 +228,20 @@ class Play:
             hint = question_answer[2]
             question = "{} Hint: {}".format(to_ask, hint)
             correct_answer = question_answer[3]
+            print(question)
+            print("Answer: ", correct_answer)
+            print("Choices...")
+            answer_choices.append(correct_answer)
+            print(answer_choices)
             nickname_q = question
         else:
             question = "Which team is based in {}".format(question_answer[1])
             correct_answer = question_answer[0]
+            print(question)
+            print("Answer: ", correct_answer)
+            print("Choices...")
+            answer_choices.append(correct_answer)
+            print(answer_choices)
             q_ans_index = 2
 
         self.question_label.config(text=question)
@@ -245,20 +263,22 @@ class Play:
             answer_choices.append(ans_opt)
             print()
 
-        answer_choices.append(correct_answer)
+        # answer_choices.append(correct_answer)
 
-        print("Answer Row:", answer_choices)
+        # print("Answer Row:", answer_choices)
 
-        print(question)
-        print("Answer: ",answer)
+        # print(question)
+        # print("Answer: ",answer)
 
         print()
-        print("Choices...")
-        print(answer_choices)
+        # print("Choices...")
+        # print(answer_choices)
         self.answer_1_button.config(text="{}".format(answer_choices[0]))
         self.answer_2_button.config(text="{}".format(answer_choices[1]))
         self.answer_3_button.config(text="{}".format(answer_choices[2]))
         self.answer_4_button.config(text="{}".format(answer_choices[3]))
+
+
 
 
 # main routine
