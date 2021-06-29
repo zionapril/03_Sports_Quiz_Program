@@ -14,7 +14,6 @@ with open('team_stadium.csv', newline='') as f:
     random.shuffle(data[1:])
 
 
-
 class Start:
     def __init__(self):
 
@@ -127,7 +126,7 @@ class Play:
         '''# If users press cross at top, game quits
         self.game_box.protocol('WM_DELETE_WINDOW', self.to_quit)'''
         self.game_frame = Frame(self.game_box, bg=background_colour)
-        self.game_frame.grid()           
+        self.game_frame.grid()
 
         # Heading Row
         self.heading_label = Label(self.game_frame, text="Premier League Quiz",
@@ -155,28 +154,28 @@ class Play:
         self.answer_1_button = Button(self.answer_frame, text="", wrap=100,
                                       bg="white", width=15,
                                       height=5,
-                                      font="Arial 10 bold")
+                                      font="Arial 10 bold", command=lambda:self.check(1))
         self.answer_1_button.grid(row=3, column=0, pady=10)
 
         # Answer 2 Button
         self.answer_2_button = Button(self.answer_frame, text="", wrap=100,
                                       bg="white", width=15,
                                       height=5,
-                                      font="Arial 10 bold")
+                                      font="Arial 10 bold", command=lambda:self.check(2))
         self.answer_2_button.grid(row=3, column=1, pady=10)
 
         # Answer 3 Button
         self.answer_3_button = Button(self.answer_frame, text="", wrap=100,
                                       bg="white", width=15,
                                       height=5,
-                                      font="Arial 10 bold")
+                                      font="Arial 10 bold", command=lambda:self.check(3))
         self.answer_3_button.grid(row=4, column=0, pady=10)
 
         # Answer 4 Button
         self.answer_4_button = Button(self.answer_frame, text="", wrap=100,
                                       bg="white", width=15,
                                       height=5,
-                                      font="Arial 10 bold")
+                                      font="Arial 10 bold", command=lambda:self.check(4))
         self.answer_4_button.grid(row=4, column=1, pady=10)
 
         # Next Question Button
@@ -215,6 +214,11 @@ class Play:
             q_ans_index = 1
             question = "What team plays in {}? ".format(question_answer[1])
             correct_answer = question_answer[0]
+
+            # store correct answer as string variable (use .set)
+
+
+
             print(question)
             print("Answer: ", correct_answer)
             print("Choices...")
@@ -276,6 +280,26 @@ class Play:
         self.answer_3_button.config(text="{}".format(answer_choices[2]))
         self.answer_4_button.config(text="{}".format(answer_choices[3]))
 
+    def check(self, position):
+
+        if position == 1:
+            # get what's in the button
+            ans = self.answer_1_button.cget('text')
+            print(ans)
+
+        elif position == 2:
+            ans = self.answer_2_button.cget('text')
+            print(ans)
+
+        elif position == 3:
+            ans = self.answer_3_button.cget('text')
+            print(ans)
+
+        elif position == 4:
+            ans = self.answer_4_button.cget('text')
+            print(ans)
+
+        # Get the string answer
 
 # main routine
 if __name__ == "__main__":
