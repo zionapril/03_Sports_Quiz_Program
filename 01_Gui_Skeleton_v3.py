@@ -118,6 +118,8 @@ class Play:
         # initialise variables
         self.balance = IntVar()
 
+        self.correct_ans = StringVar()
+
         # GUI Setup
         self.game_box = Toplevel()
 
@@ -216,8 +218,7 @@ class Play:
             correct_answer = question_answer[0]
 
             # store correct answer as string variable (use .set)
-
-
+            self.correct_ans.set(correct_answer)
 
             print(question)
             print("Answer: ", correct_answer)
@@ -236,11 +237,15 @@ class Play:
             print("Choices...")
             answer_choices.append(correct_answer)
             print(answer_choices)
+            # store correct answer as string variable (use .set)
+            self.correct_ans.set(correct_answer)
 
         else:
             question = "Which team is based in {}".format(question_answer[1])
             correct_answer = question_answer[0]
             print(question)
+            # store correct answer as string variable (use .set)
+            self.correct_ans.set(correct_answer)
             print("Answer: ", correct_answer)
             print("Choices...")
             answer_choices.append(correct_answer)
@@ -282,22 +287,34 @@ class Play:
 
     def check(self, position):
 
+        ans = ""
+
+        correct_answer = self.correct_ans.get()
+        print("Correct Answer: ", correct_answer)
+
         if position == 1:
             # get what's in the button
             ans = self.answer_1_button.cget('text')
-            print(ans)
+            print("Your Answer: ", ans)
 
         elif position == 2:
             ans = self.answer_2_button.cget('text')
-            print(ans)
+            print("Your Answer: ", ans)
 
         elif position == 3:
             ans = self.answer_3_button.cget('text')
-            print(ans)
+            print("Your Answer: ", ans)
 
         elif position == 4:
             ans = self.answer_4_button.cget('text')
-            print(ans)
+            print("Your Answer: ", ans)
+
+        self.question_label.config(text="Correct Answer: {}\n"
+                                        "Your Answer: {}".format(correct_answer, ans))
+
+        if correct_answer == ans:
+            print("Correct")
+
 
         # Get the string answer
 
