@@ -197,7 +197,6 @@ class Play:
 
         correct_answer = ""
         answer_options = ""
-
         question_cat = [
             "team", "stadium", "nickname"
         ]
@@ -211,7 +210,6 @@ class Play:
             answer = question_answer[3]
 
         answer_choices = []
-
         if category_choice == "team":
             q_ans_index = 1
             question = "What team plays in {}? ".format(question_answer[1])
@@ -314,6 +312,9 @@ class Play:
 
         if correct_answer == ans:
             print("Correct")
+
+        else:
+            print("Incorrect")
 
 
         # Get the string answer
