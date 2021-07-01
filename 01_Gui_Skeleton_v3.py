@@ -117,6 +117,7 @@ class Play:
 
         # initialise variables
         self.balance = IntVar()
+        self.played = 0
 
         self.correct_ans = StringVar()
 
@@ -189,6 +190,7 @@ class Play:
         self.next_question_btn.grid(row=5, column=0, pady=10)
 
     def next_question(self):
+
         #  self.question_label = Label(self.question_frame, text="",
         #                              bg="#C0C0C0",
         #                              font="Arial 20 bold", padx=10,
@@ -200,6 +202,12 @@ class Play:
         question_cat = [
             "team", "stadium", "nickname"
         ]
+        self.played +=1
+        print(self.played)
+
+        if self.played == 10:
+            self.next_question_btn.config(state=DISABLED)
+            print("You have completed the quiz!!!")
 
         question_answer = random.choice(data[1:])
 
@@ -249,7 +257,7 @@ class Play:
             answer_choices.append(correct_answer)
             print(answer_choices)
 
-        self.question_label.config(text=question)
+        self.question_label.config(text=question, fg="black")
 
         for item in range(0, 3):
             answer_options = random.choice(data[1:])
@@ -307,18 +315,23 @@ class Play:
             ans = self.answer_4_button.cget('text')
             print("Your Answer: ", ans)
 
-        self.question_label.config(text="Correct Answer: {}\n"
-                                        "Your Answer: {}".format(correct_answer, ans))
+        #self.question_label.config(text="Correct Answer: {}\n"
+                                        #"Your Answer: {}".format(correct_answer, ans))
 
         if correct_answer == ans:
-            print("Correct")
+            self.question_label.config(text="Correct", fg="green")
 
         else:
-            print("Incorrect")
+            self.question_label.config(text="Incorrect", fg="red")
+
+
+
+
+
+
 
 
         # Get the string answer
-
 # main routine
 if __name__ == "__main__":
     root = Tk()
