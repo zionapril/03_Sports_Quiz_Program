@@ -203,7 +203,7 @@ class Play:
             "team", "stadium", "nickname"
         ]
         self.played +=1
-        print(self.played)
+        print("Question {}".format(self.played))
 
         #if self.played == 10:
             #self.next_question_btn.config(state=DISABLED)
@@ -343,6 +343,8 @@ class Play:
             print("------------------------------------")
             print("You got {} out of 10".format(self.correct_ans))
             print("You have completed the quiz!!!")
+
+
 
 
 
