@@ -205,9 +205,10 @@ class Play:
         self.played +=1
         print(self.played)
 
-        if self.played == 10:
-            self.next_question_btn.config(state=DISABLED)
-            print("You have completed the quiz!!!")
+        #if self.played == 10:
+            #self.next_question_btn.config(state=DISABLED)
+            #print("You got {} out of 10".format(self.correct_ans))
+            #print("You have completed the quiz!!!")
 
         question_answer = random.choice(data[1:])
 
@@ -286,10 +287,10 @@ class Play:
         print()
         # print("Choices...")
         # print(answer_choices)
-        self.answer_1_button.config(text="{}".format(answer_choices[0]))
-        self.answer_2_button.config(text="{}".format(answer_choices[1]))
-        self.answer_3_button.config(text="{}".format(answer_choices[2]))
-        self.answer_4_button.config(text="{}".format(answer_choices[3]))
+        self.answer_1_button.config(state=NORMAL, text="{}".format(answer_choices[0]))
+        self.answer_2_button.config(state=NORMAL, text="{}".format(answer_choices[1]))
+        self.answer_3_button.config(state=NORMAL, text="{}".format(answer_choices[2]))
+        self.answer_4_button.config(state=NORMAL, text="{}".format(answer_choices[3]))
 
     def check(self, position):
 
@@ -302,18 +303,31 @@ class Play:
             # get what's in the button
             ans = self.answer_1_button.cget('text')
             print("Your Answer: ", ans)
+            self.answer_2_button.config(state=DISABLED)
+            self.answer_3_button.config(state=DISABLED)
+            self.answer_4_button.config(state=DISABLED)
 
         elif position == 2:
             ans = self.answer_2_button.cget('text')
             print("Your Answer: ", ans)
+            self.answer_1_button.config(state=DISABLED)
+            self.answer_3_button.config(state=DISABLED)
+            self.answer_4_button.config(state=DISABLED)
 
         elif position == 3:
             ans = self.answer_3_button.cget('text')
             print("Your Answer: ", ans)
+            self.answer_1_button.config(state=DISABLED)
+            self.answer_2_button.config(state=DISABLED)
+            self.answer_4_button.config(state=DISABLED)
 
         elif position == 4:
             ans = self.answer_4_button.cget('text')
             print("Your Answer: ", ans)
+            self.answer_1_button.config(state=DISABLED)
+            self.answer_2_button.config(state=DISABLED)
+            self.answer_3_button.config(state=DISABLED)
+
 
         #self.question_label.config(text="Correct Answer: {}\n"
                                         #"Your Answer: {}".format(correct_answer, ans))
@@ -323,6 +337,15 @@ class Play:
 
         else:
             self.question_label.config(text="Incorrect", fg="red")
+
+        if self.played == 10:
+            self.next_question_btn.config(state=DISABLED)
+            print("------------------------------------")
+            print("You got {} out of 10".format(self.correct_ans))
+            print("You have completed the quiz!!!")
+
+
+
 
 
 
