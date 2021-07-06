@@ -19,7 +19,7 @@ class Start:
 
         background_colour= "#C0C0C0"
         # initialise variables
-        self.balance = IntVar()
+        # self.balance = IntVar()
 
         # GUI Setup
         self.game_frame = Frame(bg=background_colour)
@@ -116,7 +116,9 @@ class Play:
     def __init__(self, partner):
 
         # initialise variables
-        self.balance = IntVar()
+        self.num_correct = IntVar()
+        self.num_correct.set(0)
+
         self.played = 0
 
         self.correct_ans = StringVar()
@@ -191,12 +193,6 @@ class Play:
 
     def next_question(self):
 
-        #  self.question_label = Label(self.question_frame, text="",
-        #                              bg="#C0C0C0",
-        #                              font="Arial 20 bold", padx=10,
-        #                              pady=10)
-        #  self.question_label.grid(row=2, pady=10)
-
         correct_answer = ""
         answer_options = ""
         question_cat = [
@@ -204,11 +200,6 @@ class Play:
         ]
         self.played +=1
         print("Question {}".format(self.played))
-
-        #if self.played == 10:
-            #self.next_question_btn.config(state=DISABLED)
-            #print("You got {} out of 10".format(self.correct_ans))
-            #print("You have completed the quiz!!!")
 
         question_answer = random.choice(data[1:])
 
@@ -226,6 +217,7 @@ class Play:
 
             # store correct answer as string variable (use .set)
             self.correct_ans.set(correct_answer)
+
 
             print(question)
             print("Answer: ", correct_answer)
@@ -268,25 +260,11 @@ class Play:
             else:
                 ans_opt = answer_options[0]
 
-            # # Row which includes the team, stadium, nickname
-            # print("Answer options row", answer_options)
-            # ans_opt = answer_options[0]
-            # # Answer
-            # print("Answer Option", ans_opt)
-            # # Answer choices (4) which go to answer buttons
             answer_choices.append(ans_opt)
             print()
 
-        # answer_choices.append(correct_answer)
-
-        # print("Answer Row:", answer_choices)
-
-        # print(question)
-        # print("Answer: ",answer)
-
         print()
-        # print("Choices...")
-        # print(answer_choices)
+
         self.answer_1_button.config(state=NORMAL, text="{}".format(answer_choices[0]))
         self.answer_2_button.config(state=NORMAL, text="{}".format(answer_choices[1]))
         self.answer_3_button.config(state=NORMAL, text="{}".format(answer_choices[2]))
@@ -295,6 +273,7 @@ class Play:
     def check(self, position):
 
         ans = ""
+        number_correct = 0
 
         correct_answer = self.correct_ans.get()
         print("Correct Answer: ", correct_answer)
@@ -328,12 +307,11 @@ class Play:
             self.answer_2_button.config(state=DISABLED)
             self.answer_3_button.config(state=DISABLED)
 
-
-        #self.question_label.config(text="Correct Answer: {}\n"
-                                        #"Your Answer: {}".format(correct_answer, ans))
-
         if correct_answer == ans:
             self.question_label.config(text="Correct", fg="green")
+            number_correct = self.num_correct.get()
+            number_correct += 1
+            self.num_correct.set(number_correct)
 
         else:
             self.question_label.config(text="Incorrect", fg="red")
@@ -341,22 +319,9 @@ class Play:
         if self.played == 10:
             self.next_question_btn.config(state=DISABLED)
             print("------------------------------------")
-            print("You got {} out of 10".format(self.correct_ans))
+            print("You got {} out of 10".format(number_correct))
             print("You have completed the quiz!!!")
 
-
-
-
-
-
-
-
-
-
-
-
-
-        # Get the string answer
 # main routine
 if __name__ == "__main__":
     root = Tk()
